@@ -1,7 +1,7 @@
 # DevIn
 - Installed Tailwind Css, DaisyUi , added navbar component 
 
-
+- Set cookies in the browser as login first time to acces the further redirection throught the APIs
 
 
 
