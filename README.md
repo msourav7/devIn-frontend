@@ -6,6 +6,8 @@
 - installed redux , created store , added a Provider , created userSlice
   confugureStore => Provider => createSlice => add reducer to the store
 
+- called profile/view in body.jsx to make logged in user available everywhere other wise show message please login if someone tries to acces aother urls  
+
 
 
 
