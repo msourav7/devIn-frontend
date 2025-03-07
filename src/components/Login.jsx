@@ -6,8 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
-  const [emailId, setEmailId] = useState("");
-  const [password, setPassword] = useState("");
+  const [emailId, setEmailId] = useState("eren@gmail.com");
+  const [password, setPassword] = useState("Eren@123");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -21,10 +22,11 @@ const Login = () => {
         },
         { withCredentials: true } // setting it to true to get cookies with token in browser storage
       );
-      console.log(res.data)
-      dispatch(addUser(res.data)) //dispatching anaction toadd the res.data toaddUser reducer tostore the userData instore
-      navigate("/")
+      console.log(res.data);
+      dispatch(addUser(res.data)); //dispatching anaction toadd the res.data toaddUser reducer tostore the userData instore
+      navigate("/");
     } catch (err) {
+      setError(err?.response?.data || "Somthing went wrong");
       console.error(err);
     }
   };
@@ -60,6 +62,9 @@ const Login = () => {
               />
             </label>
           </div>
+
+          <p className="text-red-600">{error}</p>
+          
           <div className="card-actions justify-center my-2">
             <button className="btn btn-primary" onClick={handleLogin}>
               Login
