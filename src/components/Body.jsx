@@ -12,6 +12,7 @@ const Body = () => {
   const navigate = useNavigate()
   const userData = useSelector((store)=>store.user)
   
+  //fetching all the user details with profile/api to show on feed page 
   const fetchUser = async () => {
     if (userData) return;
     try {

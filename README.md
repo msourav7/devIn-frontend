@@ -8,6 +8,8 @@
 
 - called profile/view in body.jsx to make logged in user available everywhere other wise show message please login if someone tries to acces aother urls  
 
+- Built the UserCard/feed page and called /feed api
+
 
 
 
