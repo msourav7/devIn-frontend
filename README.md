@@ -11,6 +11,7 @@
 - Built the UserCard/feed page and called /feed api
 
 - built edit profile card via patch api also used userCard component(readme)
+- Building feature to all my connections, Created the page to show all the connections of the loggedIn user and stored all the connections data into connectionSlice 
 
 
 
