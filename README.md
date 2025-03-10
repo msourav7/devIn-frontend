@@ -10,6 +10,7 @@
 
 - Built the UserCard/feed page and called /feed api
 
+- built edit profile card via patch api also used userCard component(readme)
 
 
 
