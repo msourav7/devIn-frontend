@@ -15,6 +15,8 @@
 
 - Created component and store for connection request(accepted or rejected), and also created the functionality for accept or reject the connectio request
 
+- Created Reject or intrested feature on card on Feed page
+
 
 
 
