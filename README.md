@@ -17,6 +17,8 @@
 
 - Created Reject or intrested feature on card on Feed page
 
+- Created Sign Up from updated meta data
+
 
 
 
