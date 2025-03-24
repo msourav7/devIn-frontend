@@ -13,6 +13,8 @@
 - built edit profile card via patch api also used userCard component(readme)
 - Building feature to all my connections, Created the page to show all the connections of the loggedIn user and stored all the connections data into connectionSlice 
 
+- Created component and store for connection request(accepted or rejected), and also created the functionality for accept or reject the connectio request
+
 
 
 

@@ -36,7 +36,7 @@ const Connections = () => {
         return (
           <div key={_id} className=" flex m-4 p-4  rounded-lg bg-base-300 w-1/2 mx-auto">
             <div>
-              <img alt="photo" className="w-20 h-20 rounded-full" src={photoUrl} />
+              <img alt="photo" className="w-20 h-20 rounded-full object-center" src={photoUrl} />
             </div>
             <div className="text-left mx-4"> 
               {lastName && <h2 className="font-bold text-lg">{firstName + " " + lastName}</h2>} {/* show lastName only when it is present otherwise it show undefined */}
