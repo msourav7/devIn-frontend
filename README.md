@@ -21,6 +21,26 @@
 
 
 
+# Deployment
+
+- Signup on the AWS
+- Launched the instance
+- chmod 400 <secret.key>.pem
+- ssh -i "devIn-secret.pem" ubuntu@ec2-13-51-162-135.eu-north-1.compute.amazonaws.com
+- installed Node version 22.14.0 in the aws machine's terminal
+- git clone both the repositories frontend and backend
+- Frontend
+  - npm install -> dependencies installed
+  - npm run build
+  - sudo apt update
+  - sudo apt install nginx(used to deploy application)
+  - sudo systemctl start nginx(to start nginx in to our system)
+  - sudo systemctl enable nginx
+  - Copy code from dist(build files) to /var/www/html => (sudo scp -r dist/* /var/www/html)
+  - check if copied or not  cd /var/www/html -> ls ->(assets  connect.png  devIcon.jpeg  index.html  index.nginx-debian.html  vite.svg)
+  - Enable port :80 of your instance
+
+
 
 
 
