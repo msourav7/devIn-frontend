@@ -40,8 +40,13 @@
   - Copy code from dist(build files) to /var/www/html => (sudo scp -r dist/* /var/www/html)
   - check if copied or not  cd /var/www/html -> ls ->(assets  connect.png  devIcon.jpeg  index.html  index.nginx-debian.html  vite.svg)
   - Enable port :80 of your instance
+  - [Whenever you you make a update in the front end then create a build of it again]
+       1- git pull
+       2- npm run build
+       3- sudo scp -r dist/* /var/www/html
 
-  - Backing
+
+  - Backend
    - allowed ec2 instance public IP on mongodb server(basically whilisting the aws server machinne IP on mongoBd)
    - npm install pm2 -g
    - pm2 start npm -- start
@@ -75,15 +80,29 @@
     } 
 
     - restart the nginx - sudo systemctl restart nginx
-    
+
 
 
  - Modify the BASE_URL of the frontend to => export const BASE_URL="/api";    
 
+# Adding a custom domain name
+
+ - purchased domain name from godady
+  - signup on cloudflare & add a new domain name server
+  - **changed the name servers on godady and point it to cloudflare(copy nameserver from cloudflare and replace it with godady nameserver)
+  - wait for sometime till your nameserverd are updated
+  - in DNS record of the cloudflare changed the ip of A record [A    devin.monster   13.51.162.135] and deleted the left over history of godady nameserver 
+  - Enabled SSL for the webside (from Browser till cloudflare)
 
 
+# Sending Emails vis SES
 
-
+ - Create a IAM user
+ - Give access to AmazonSESFullAccess(for read and write also)
+ - Amazon SES: Create an Identity
+ - Verify your domain name
+ - Verify an email address 
+ - Install AWS SDK -v3 [Code example--](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/ses#code-examples)
 
 
 
