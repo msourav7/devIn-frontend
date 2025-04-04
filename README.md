@@ -25,7 +25,7 @@
 
 - Signup on the AWS
 - Launched the instance
-- chmod 400 <secret.key>.pem
+- chmod 400 <secret.key>.pem [secret key kept]
 - ssh -i "devIn-secret.pem" ubuntu@ec2-13-51-162-135.eu-north-1.compute.amazonaws.com
 - installed Node version 22.14.0 in the aws machine's terminal
 - git clone both the repositories frontend and backend
@@ -103,7 +103,22 @@
  - Verify your domain name
  - Verify an email address 
  - Install AWS SDK -v3 [Code example--](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/ses#code-examples)
+ - Setup SESclient
+ - Access credwntials should be created in IAM under SecurityCredentials Tab
+ - Add the credentials to .env file
+ - Write code for SESclient
+ - Write code for Sending emails address
+ - Make the email dynamic by passing more params to the run function
 
+ # Sending Emails in a scheduled time using cron package
+  
+  - Installing node-cron
+  - Learned about cronExpressions/string
+  - Scheduled a emial job
+  - learned about date-fns(npm packahge)
+  - Find all unique emails Id who have got connection request in previous day
+  - Send emails
+  - **THINGS TO CHECK-[Amazon SES Bulk Emails, Make custopm templates for email usil using amazon ses] , bee-queue & npm bull package - to manage lakhs of enail sending process smoothly
 
 
 
