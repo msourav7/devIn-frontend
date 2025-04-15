@@ -120,6 +120,19 @@
   - Send emails
   - **THINGS TO CHECK-[Amazon SES Bulk Emails, Make custopm templates for email usil using amazon ses] , bee-queue & npm bull package - to manage lakhs of enail sending process smoothly
 
+# Real time chat using WebSockets(spcket.io)
+
+  - Build the UI for a chat window on /chat/:targetUserId
+  - Setup socket.io in backend
+  - npm i socket.io
+  - Setup FE and BE with Socket.io.client and socket.io
+  - Initialized the chat 
+  - createSocketConnection 
+  - Listen to events
+  - set up the chat foemat system to start and end with comparing ("chat " + (msg.senderId === userID ? "chat-end" : "chat-start")) while using the msg SenderId with the logged in user Id 
+
+
+
 
 
 Body
