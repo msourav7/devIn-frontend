@@ -16,4 +16,28 @@
   .animate-fade-in {
     animation: fade-in 0.3s ease-in-out;
   }
+
+  
+
+  .chat-container {
+    scrollbar-width: thin;  /* For Firefox */
+    scrollbar-color: rgba(0, 0, 0, 0.5) transparent; /* For Firefox: Thumb color */
+  }
+  
+  /* Webkit browsers (Chrome, Safari) */
+  .chat-container::-webkit-scrollbar {
+    width: 8px;  /* Set width to something small, like 8px */
+    height: 8px; /* If you want a horizontal scrollbar too */
+  }
+  
+  .chat-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.5);  /* Thumb color (draggable part) */
+    border-radius: 10px;  /* Rounded thumb */
+  }
+  
+  .chat-container::-webkit-scrollbar-track {
+    background: transparent;  /* Hide the track (background) */
+  }
+  
+  
   
