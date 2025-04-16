@@ -32,8 +32,8 @@ const NavBar = () => {
       </div>
       {user && (
         <div className="flex gap-2 items-center">
-          <div className="hidden md:flex gap-4 items-center">
           <ThemeToggle />
+          <div className="hidden md:flex gap-4 items-center">
           <Link to={"/connections"}>Connections</Link>
           <Link to={"/requests"}>Requests</Link>
           <Link to={"/profile"}>Profile</Link>
