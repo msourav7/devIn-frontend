@@ -133,6 +133,12 @@
 
 
 
+# Later changes (Ui,bugs,functional)
+  -Ui
+   - changed the theme
+   - removed "intrested" & "ignore" button from edit profile
+   - changed Chat component Ui
+
 
 
 Body

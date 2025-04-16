@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 import { removeUser } from "../utils/userSlice";
+import ThemeToggle from "./ThemeToggle";
+import Connections from "./Connections";
 
 const NavBar = () => {
   const user = useSelector((store) => store.user);
@@ -30,6 +32,12 @@ const NavBar = () => {
       </div>
       {user && (
         <div className="flex gap-2 items-center">
+          <div className="hidden md:flex gap-4 items-center">
+          <ThemeToggle />
+          <Link to={"/connections"}>Connections</Link>
+          <Link to={"/requests"}>Requests</Link>
+          <Link to={"/profile"}>Profile</Link>
+          </div>
           <div className="md:w-auto">Welcome, {user.firstName}</div>
           <div className="dropdown dropdown-end">
             <div

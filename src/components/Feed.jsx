@@ -12,6 +12,7 @@ const Feed = () => {
   // const [feed,setFeed]=useState("") using redux for state manag. instead of useState variables & after storing it to srdux store we'll use useSelector to get the data from the store and loop here to show it on display
 
   const getFeed= async()=>{
+    //if feed present dont fetch it again ,only re-fetch when needed:
     if(feed) return;
     try{
       const res = await axios.get(BASE_URL + "/feed",{withCredentials:true,})

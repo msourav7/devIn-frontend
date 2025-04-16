@@ -136,7 +136,7 @@ const EditProfile = ({ user }) => {
         </div>
         <div className="w-full max-w-md lg:max-w-fit">
           <UserCard
-            user={{ firstName, lastName, photoUrl, age, gender, about }}
+            user={{ firstName, lastName, photoUrl, age, gender, about }} showActions={false}
           />
         </div>
       </div>
