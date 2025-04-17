@@ -36,7 +36,7 @@ const Feed = () => {
 
   return (
     feed && (
-    <div className='flex justify-center my-10'>
+    <div className='flex justify-center my-5  overflow-y-auto'>
       {feed?.length > 0 ? <UserCard user={feed[0]} /> : <h1>No Feed Found</h1>}
       {/* <UserCard user={feed[0]}/> */}
       </div>
@@ -45,3 +45,4 @@ const Feed = () => {
 }
 
 export default Feed
+

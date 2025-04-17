@@ -24,7 +24,7 @@ const UserCard = ({ user ,showActions = true}) => {
     <div className="card bg-base-300 w-96 shadow-xl">
       <figure>
         <img
-        className="w-100 h-100 object-cover rounded-lg shadow-md"// this whole style added by me after to image insdie the box
+        className="w-100 h-100 object-cover rounded-lg shadow-md"// custom style added by me after to image insdie the box
           src={photoUrl}
           alt="UserPhoto"
         />

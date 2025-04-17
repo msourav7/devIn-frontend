@@ -79,6 +79,8 @@
         proxy_cache_bypass $http_upgrade;
     } 
 
+    - Also set path for 2nd(below)  location /api/ -> to index.html
+
     - restart the nginx - sudo systemctl restart nginx
 
 
