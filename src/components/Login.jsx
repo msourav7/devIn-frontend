@@ -157,7 +157,11 @@ const Login = () => {
           <p
               className="text-center cursor-pointer py-2 font-bold text-lg hover:text-gray-600 hover:underline transform hover:scale-110 transition-all duration-200"
 
-            onClick={() => setIsLoginForm(!isLoginForm)}
+            // onClick={() => setIsLoginForm(!isLoginForm)} //better way below cuz performing new operation of setErroras well
+            onClick={() => {
+              setIsLoginForm((prev) => !prev);
+              setError(""); // Clear error when switching forms
+            }}
           >
             {isLoginForm
               ? "New User? Sign Up Here"
