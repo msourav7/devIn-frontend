@@ -36,7 +36,7 @@ const Feed = () => {
 
   return (
     feed && (
-    <div className='flex justify-center my-5  overflow-y-auto'>
+      <div className="flex flex-col items-center my-5 h-[calc(100vh-100px)] overflow-y-auto w-full px-4">
       {feed?.length > 0 ? <UserCard user={feed[0]} /> : <h1>No Feed Found</h1>}
       {/* <UserCard user={feed[0]}/> */}
       </div>
