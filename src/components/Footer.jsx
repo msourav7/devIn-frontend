@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
 
-    <footer className="footer sm:footer-horizontal bg-neutral text-neutral-content items-center p-4  fixed bottom-0">
+    <footer className="footer sm:footer-horizontal bg-neutral text-neutral-content items-center p-1 sm:p-3 fixed bottom-0 gap-y-3">
   <aside className="grid-flow-col items-center">
     <svg
       width="36"
@@ -19,7 +19,8 @@ const Footer = () => {
     </svg>
     <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
   </aside>
-  <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+  <nav className=" w-full sm:w-auto grid grid-flow-col gap-4 justify-center md:place-self-center md:justify-self-end mb-1 ">
+
 
     {/* GitHub Link */}
     <Link to={"https://github.com/msourav7"}>
