@@ -57,7 +57,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center my-7 ">
+    <div className="flex justify-center my-5 ">
       <div className="card bg-base-300 w-96 shadow-xl">
         <div className="card-body">
           <h2 className="card-title justify-center">
@@ -155,7 +155,8 @@ const Login = () => {
           </div>
           {/* <p className="" onClick={()=>setIsLoginForm((value)=>!value)}>{isLoginForm?"New User? Sign Up Here":"Existing User? Login Here"}</p> */}
           <p
-            className="m-auto cursor-pointer py-2 bold"
+              className="text-center cursor-pointer py-2 font-bold text-lg hover:text-gray-600 hover:underline transform hover:scale-110 transition-all duration-200"
+
             onClick={() => setIsLoginForm(!isLoginForm)}
           >
             {isLoginForm
