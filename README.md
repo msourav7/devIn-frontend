@@ -136,12 +136,14 @@
 
 
 # Later changes (Ui,bugs,functional)
-  -Ui
+  - Ui
    - changed the theme
    - removed "intrested" & "ignore" button from edit profile
-   - changed Chat component Ui
+   - changed Chat component Ui, added <motion.div> to the login page for better ui
 
-
+  - Functional change
+   - Added showActions to remove the "Intrested" & "Ignore" buttons from edit profile
+   - Added password toggle , 
 
 Body
 
