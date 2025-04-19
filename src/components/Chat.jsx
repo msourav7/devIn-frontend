@@ -135,13 +135,23 @@ import { createSocketConnection } from "../utils/socket";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
+import { formatDistanceToNow } from "date-fns";
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const { targetUserId } = useParams();
+  const [timestampRefresh,setTimestampRefresh]=useState(0)
   const user = useSelector((store) => store.user);
   const userID = user?._id;
+
+  //useEffect for - after every one minute update the time stamp
+  useEffect(()=>{
+    const interval = setInterval(()=>{
+      setTimestampRefresh(prev=>prev+1)
+    },60000) 
+    return()=>clearInterval(interval)
+  },[])
 
   const fetchChatMessages = async () => {
     const chat = await axios.get(BASE_URL + "/chat/" + targetUserId, {
@@ -149,12 +159,13 @@ const Chat = () => {
     });
 
     const chatMessages = chat?.data?.messages.map((msg) => {
-      const { senderId, text } = msg;
+      const { senderId, text, createdAt  } = msg;
       return {
         firstName: senderId?.firstName,
         lastName: senderId?.lastName,
         text,
         senderId: senderId?._id,
+        createdAt ,
       };
     });
     setMessages(chatMessages);
@@ -183,8 +194,8 @@ const Chat = () => {
       targetUserId,
     });
 
-    socket.on("messageReceived", ({ firstName, lastName, text, senderId }) => {
-      setMessages((prev) => [...prev, { firstName, lastName, text, senderId }]);
+    socket.on("messageReceived", ({ firstName, lastName, text, senderId, createdAt  }) => {
+      setMessages((prev) => [...prev, { firstName, lastName, text, senderId, createdAt  }]);
     });
 
     return () => {
@@ -218,6 +229,9 @@ const Chat = () => {
               <div className={`max-w-xs sm:max-w-sm md:max-w-md p-3 rounded-lg shadow-md ${isSelf ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-900"} animate-fade-in`}>
                 <div className="text-sm font-semibold mb-1">
                   {msg.firstName} {msg.lastName}
+                  <time className="text-xs opacity-50 ml-2">
+                  {msg.createdAt ? formatDistanceToNow(new Date(msg.createdAt), { addSuffix: true }) : ""}
+                  </time>
                 </div>
                 <div className="animate-fade-in text-base break-words">{msg.text}</div>
               </div>

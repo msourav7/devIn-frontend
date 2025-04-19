@@ -59,7 +59,7 @@ const Login = () => {
 
   return (
     // <div className="flex justify-center my-5 ">
-    <div className="min-h-screen flex items-center justify-center overflow-y-auto p-1 ">
+    <div className="min-h-[80vh] flex items-center justify-center overflow-y-auto p-1 ">
       <AnimatePresence mode="wait">
         <motion.div
           key={isLoginForm ? "login" : "signup"}

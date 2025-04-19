@@ -144,6 +144,7 @@
   - Functional change
    - Added showActions to remove the "Intrested" & "Ignore" buttons from edit profile
    - Added password toggle , 
+   - Chat delete functionalied via cron to delete chat in certain time period
 
 Body
 
