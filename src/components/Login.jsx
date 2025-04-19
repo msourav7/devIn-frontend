@@ -1,11 +1,12 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 import { EyeOff, Eye } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { BatteryFull, BatteryLow, BatteryCharging, BatteryMedium } from "lucide-react";
 
 const Login = () => {
   const [emailId, setEmailId] = useState("eren@gmail.com");
@@ -17,6 +18,33 @@ const Login = () => {
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [batteryLevel, setBatteryLevel] = useState(null);
+const [isCharging, setIsCharging] = useState(null);
+// Fetch battery info
+useEffect(() => {
+  const getBatteryStatus = async () => {
+    if ('getBattery' in navigator) {
+      const battery = await navigator.getBattery();
+      const updateStatus = () => {
+        setBatteryLevel(Math.floor(battery.level * 100));
+        setIsCharging(battery.charging);
+      };
+
+      updateStatus();
+
+      battery.addEventListener("levelchange", updateStatus);
+      battery.addEventListener("chargingchange", updateStatus);
+
+      return () => {
+        battery.removeEventListener("levelchange", updateStatus);
+        battery.removeEventListener("chargingchange", updateStatus);
+      };
+    }
+  };
+
+  getBatteryStatus();
+}, [])
 
   const handleLogin = async () => {
     try {
@@ -59,7 +87,7 @@ const Login = () => {
 
   return (
     // <div className="flex justify-center my-5 ">
-    <div className="min-h-[80vh] flex items-center justify-center overflow-y-auto p-1 ">
+    <div className="min-h-[80vh] flex flex-col items-center justify-center overflow-y-auto p-1 ">
       <AnimatePresence mode="wait">
         <motion.div
           key={isLoginForm ? "login" : "signup"}
@@ -181,6 +209,32 @@ const Login = () => {
           </div>
         </motion.div>{" "}
       </AnimatePresence>
+      
+     {/* Battery percantage */}
+     {batteryLevel !== null && (
+       <div className="flex flex-col items-center mt-6 w-80">
+         <div className="flex items-center gap-2 text-gray-700 text-lg mb-2">
+           {isCharging ? (
+             <BatteryCharging size={24} className="text-green-500" />
+           ) : batteryLevel >= 75 ? (
+        <BatteryFull size={24} className="text-green-500" />
+           ) : batteryLevel >= 40 ? (
+        <BatteryMedium size={24} className="text-yellow-500" />
+           ) : (
+        <BatteryLow size={24} className="text-red-500" />
+           )}
+           <span>{batteryLevel}% {isCharging && "Charging"}</span>
+         </div>
+     
+         {/* Progress Bar */}
+         <div className="w-full bg-gray-300 rounded-full h-4 overflow-hidden">
+        <div
+        className={`h-full ${batteryLevel > 40 ? "bg-green-400" : "bg-red-400"}`}
+        style={{ width: `${batteryLevel}%` }}></div>
+         </div>
+       </div>
+     )}
+     
     </div>
   );
 };

@@ -159,13 +159,14 @@ const Chat = () => {
     });
 
     const chatMessages = chat?.data?.messages.map((msg) => {
-      const { senderId, text, createdAt  } = msg;
+      const { senderId, text, createdAt,photoUrl   } = msg;
       return {
         firstName: senderId?.firstName,
         lastName: senderId?.lastName,
         text,
         senderId: senderId?._id,
         createdAt ,
+        photoUrl: photoUrl || senderId?.photoUrl,
       };
     });
     setMessages(chatMessages);
@@ -192,10 +193,11 @@ const Chat = () => {
       lastName: user.lastName,
       userID,
       targetUserId,
+      photoUrl:user.photoUrl,
     });
 
-    socket.on("messageReceived", ({ firstName, lastName, text, senderId, createdAt  }) => {
-      setMessages((prev) => [...prev, { firstName, lastName, text, senderId, createdAt  }]);
+    socket.on("messageReceived", ({ firstName, lastName, text, senderId, createdAt,photoUrl  }) => {
+      setMessages((prev) => [...prev, { firstName, lastName, text, senderId, createdAt,photoUrl  }]);
     });
 
     return () => {
@@ -211,6 +213,7 @@ const Chat = () => {
       userID,
       targetUserId,
       text: newMessage,
+      photoUrl:user.photoUrl,
     });
     setNewMessage("");
   };
@@ -227,11 +230,20 @@ const Chat = () => {
           return (
             <div key={index} className={`flex ${isSelf ? "justify-end" : "justify-start"}`}>
               <div className={`max-w-xs sm:max-w-sm md:max-w-md p-3 rounded-lg shadow-md ${isSelf ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-900"} animate-fade-in`}>
+
                 <div className="text-sm font-semibold mb-1">
+                  <div className="chat-image avatar ml-0.5 mr-2">
+                    <div className="w-10 rounded-full">
+                       <img
+                         alt="Tailwind CSS chat bubble component"
+                         src={msg.photoUrl} />
+                     </div>
+                  </div>
                   {msg.firstName} {msg.lastName}
                   <time className="text-xs opacity-50 ml-2">
                   {msg.createdAt ? formatDistanceToNow(new Date(msg.createdAt), { addSuffix: true }) : ""}
                   </time>
+                  
                 </div>
                 <div className="animate-fade-in text-base break-words">{msg.text}</div>
               </div>
@@ -254,55 +266,6 @@ const Chat = () => {
       </div>
     </div>
   );
-   
-
-  //same gunctionalty with more responsiveness
-  // return (
-  //   <div className="flex flex-col min-h-[80vh] bg-base-200 rounded-xl shadow-xl my-5 border border-base-300">
-  
-  //     {/* Header */}
-  //     <div className="p-4 border-b border-base-300 text-lg font-bold bg-base-100 text-center rounded-t-xl">
-  //       Chat
-  //     </div>
-  
-  //     {/* Chat messages */}
-  //     <div className="flex-1 overflow-y-auto px-4 py-3 space-y-4">
-  //       {messages.map((msg, index) => {
-  //         const isSelf = msg.senderId === userID;
-  //         return (
-  //           <div key={index} className={`flex ${isSelf ? "justify-end" : "justify-start"}`}>
-  //             <div className={`max-w-[80%] p-3 rounded-lg shadow-md ${isSelf ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-900"} animate-fade-in`}>
-  //               <div className="text-xs font-semibold mb-1">
-  //                 {msg.firstName} {msg.lastName}
-  //                 <time className="text-[10px] opacity-50 ml-2 block">
-  //                   {msg.createdAt ? formatDistanceToNow(new Date(msg.createdAt), { addSuffix: true }) : ""}
-  //                 </time>
-  //               </div>
-  //               <div className="animate-fade-in text-sm break-words">{msg.text}</div>
-  //             </div>
-  //           </div>
-  //         );
-  //       })}
-  //     </div>
-  
-  //     {/* Input box */}
-  //     <div className="border-t p-3 bg-base-100">
-  //       <div className="flex items-center gap-2">
-  //         <input
-  //           value={newMessage}
-  //           onChange={(e) => setNewMessage(e.target.value)}
-  //           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-  //           placeholder="Type your message..."
-  //           className="flex-1 bg-base-200 p-3 rounded-lg border border-base-300 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
-  //         />
-  //         <button onClick={sendMessage} className="btn btn-primary text-sm">
-  //           Send
-  //         </button>
-  //       </div>
-  //     </div>
-  
-  //   </div>
-  // );
   
 };
 
