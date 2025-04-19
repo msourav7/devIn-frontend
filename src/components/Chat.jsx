@@ -258,7 +258,7 @@ const Chat = () => {
 
   //same gunctionalty with more responsiveness
   return (
-    <div className="w-full sm:w-11/12 md:w-3/4 lg:w-2/3 xl:w-1/2 mx-auto bg-base-200 rounded-xl shadow-xl my-5 h-[80vh] flex flex-col border border-base-300">
+    <div className="w-full sm:w-11/12 md:w-3/4 lg:w-2/3 xl:w-1/2 mx-auto bg-base-200 rounded-xl shadow-xl my-5 min-h-[80vh] flex flex-col border border-base-300">
       
       {/* Header */}
       <div className="p-3 sm:p-4 border-b border-base-300 text-lg sm:text-xl font-bold bg-base-100 rounded-t-xl text-center">
@@ -288,7 +288,7 @@ const Chat = () => {
       </div>
   
       {/* Input Field */}
-      <div className="p-3 sm:p-4 border-t border-base-300 bg-base-100 flex items-center gap-2">
+      <div className="sticky bottom-0 left-0 right-0 p-3 sm:p-4 border-t border-base-300 bg-base-100 flex items-center gap-2">
         <input
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
@@ -303,6 +303,7 @@ const Chat = () => {
   
     </div>
   );
+  
   
 };
 
