@@ -20,31 +20,31 @@ const Login = () => {
   const navigate = useNavigate();
 
   const [batteryLevel, setBatteryLevel] = useState(null);
-const [isCharging, setIsCharging] = useState(null);
-// Fetch battery info
-useEffect(() => {
-  const getBatteryStatus = async () => {
-    if ('getBattery' in navigator) {
-      const battery = await navigator.getBattery();
-      const updateStatus = () => {
-        setBatteryLevel(Math.floor(battery.level * 100));
-        setIsCharging(battery.charging);
-      };
+  const [isCharging, setIsCharging] = useState(null);
+  // Fetch battery info
+  useEffect(() => {
+    const getBatteryStatus = async () => {
+      if ('getBattery' in navigator) {
+        const battery = await navigator.getBattery();
+        const updateStatus = () => {
+          setBatteryLevel(Math.floor(battery.level * 100));
+          setIsCharging(battery.charging);
+        };
 
-      updateStatus();
+        updateStatus();
 
-      battery.addEventListener("levelchange", updateStatus);
-      battery.addEventListener("chargingchange", updateStatus);
+        battery.addEventListener("levelchange", updateStatus);
+        battery.addEventListener("chargingchange", updateStatus);
 
-      return () => {
-        battery.removeEventListener("levelchange", updateStatus);
-        battery.removeEventListener("chargingchange", updateStatus);
-      };
-    }
-  };
+        return () => {
+          battery.removeEventListener("levelchange", updateStatus);
+          battery.removeEventListener("chargingchange", updateStatus);
+        };
+      }
+    };
 
-  getBatteryStatus();
-}, [])
+    getBatteryStatus();
+  }, [])
 
   const handleLogin = async () => {
     try {

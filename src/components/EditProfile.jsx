@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import axios from "axios";
 
+//This user in props is comming from Profile.jsx
 const EditProfile = ({ user }) => {
   const [firstName, setFirstName] = useState(user.firstName || "");
   const [lastName, setLastName] = useState(user.lastName || "");
@@ -33,9 +34,9 @@ const EditProfile = ({ user }) => {
       );
       dispatch(addUser(res?.data?.data));
       setShowToaste(true);
-      setTimeout(()=>{
-        setShowToaste(false)
-      },3000);
+      setTimeout(() => {
+        setShowToaste(false);
+      }, 3000);
       console.log(res);
     } catch (err) {
       setError(err.response?.data);
@@ -44,9 +45,16 @@ const EditProfile = ({ user }) => {
 
   return (
     <>
-      <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center my-10 gap-6">
+    <div className="pb-24">
+      {/* <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center my-10 gap-6">
         <div className="w-full max-w-md lg:max-w-fit">
-          <div className="card bg-base-300 w-96 shadow-xl">
+          <div className="card bg-base-300 w-96 shadow-xl"> */}
+          
+        <div className="flex flex-col lg:flex-row items-center justify-center my-10 lg:gap-6 gap-3">
+         <div className="flex justify-center w-full lg:w-auto">
+          <div className="card bg-base-300 w-95 shadow-xl">
+
+            
             <div className="card-body">
               <h2 className="card-title justify-center">Edit Profile</h2>
               <div>
@@ -134,9 +142,11 @@ const EditProfile = ({ user }) => {
             </div>
           </div>
         </div>
-        <div className="w-full max-w-md lg:max-w-fit">
+        {/* <div className="w-full max-w-md lg:max-w-fit"> */}
+        <div className="flex justify-center w-95 lg:w-auto">
           <UserCard
-            user={{ firstName, lastName, photoUrl, age, gender, about }} showActions={false}
+            user={{ firstName, lastName, photoUrl, age, gender, about }}
+            showActions={false}
           />
         </div>
       </div>
@@ -147,6 +157,7 @@ const EditProfile = ({ user }) => {
           </div>
         </div>
       )}
+      </div>
     </>
   );
 };
