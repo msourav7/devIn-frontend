@@ -53,7 +53,7 @@ const Requests = () => {
 
           {requests.map((e) => {
             const { _id, firstName, lastName, age, gender, about, photoUrl } =
-              e.fromUserId; //these are all USER_SAFE_DATA from userRouter from backendwhich we are allowing to see other what they can see of connec. detail
+              e.fromUserId; //these are all coming USER_SAFE_DATA from userRouter from backendwhich we are allowing to see other what they can see of connec. detail
             return (
               <div
                 key={_id}
@@ -76,7 +76,7 @@ const Requests = () => {
                   <p>{age + " " + gender}</p>
                   <p>{about}</p>
                 </div>
-                <div>
+                <div className="flex flex-col md:flex-row gap-[3px]">
                   <button
                     className="btn btn-primary mx-2"
                     onClick={() => reviewRequest("rejected", e._id)}
