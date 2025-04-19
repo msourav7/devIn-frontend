@@ -57,7 +57,7 @@ const Connections = () => {
 
   return (
     <>
-      <div className="pb-24">
+      <div className="pb-36">
         <div className="text-center my-10">
           <h1 className="font-bold text-white text-3xl">Connections</h1>
 
