@@ -215,45 +215,95 @@ const Chat = () => {
     setNewMessage("");
   };
 
+  // return (
+  //   <div className="w-full md:w-3/4 mx-auto bg-base-200 rounded-xl shadow-xl my-5 h-[70vh] flex flex-col border border-base-300">
+  //     <div className="p-4 border-b border-base-300 text-xl font-bold bg-base-100 rounded-t-xl">
+  //       Chat
+  //     </div>
+
+  //     <div className="chat-container flex-1 overflow-y-auto px-5 py-4 space-y-4">
+  //       {messages.map((msg, index) => {
+  //         const isSelf = msg.senderId === userID;
+  //         return (
+  //           <div key={index} className={`flex ${isSelf ? "justify-end" : "justify-start"}`}>
+  //             <div className={`max-w-xs sm:max-w-sm md:max-w-md p-3 rounded-lg shadow-md ${isSelf ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-900"} animate-fade-in`}>
+  //               <div className="text-sm font-semibold mb-1">
+  //                 {msg.firstName} {msg.lastName}
+  //                 <time className="text-xs opacity-50 ml-2">
+  //                 {msg.createdAt ? formatDistanceToNow(new Date(msg.createdAt), { addSuffix: true }) : ""}
+  //                 </time>
+  //               </div>
+  //               <div className="animate-fade-in text-base break-words">{msg.text}</div>
+  //             </div>
+  //           </div>
+  //         );
+  //       })}
+  //     </div>
+
+  //     <div className="p-4 border-t border-base-300 bg-base-100 flex items-center gap-2">
+  //       <input
+  //         value={newMessage}
+  //         onChange={(e) => setNewMessage(e.target.value)}
+  //         onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+  //         placeholder="Type your message..."
+  //         className="flex-1 bg-base-200 p-3 rounded-lg border border-base-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+  //       />
+  //       <button onClick={sendMessage} className="btn btn-primary">
+  //         Send
+  //       </button>
+  //     </div>
+  //   </div>
+  // );
+   
+
+  //same gunctionalty with more responsiveness
   return (
-    <div className="w-full md:w-3/4 mx-auto bg-base-200 rounded-xl shadow-xl my-5 h-[70vh] flex flex-col border border-base-300">
-      <div className="p-4 border-b border-base-300 text-xl font-bold bg-base-100 rounded-t-xl">
+    <div className="w-full sm:w-11/12 md:w-3/4 lg:w-2/3 xl:w-1/2 mx-auto bg-base-200 rounded-xl shadow-xl my-5 h-[80vh] flex flex-col border border-base-300">
+      
+      {/* Header */}
+      <div className="p-3 sm:p-4 border-b border-base-300 text-lg sm:text-xl font-bold bg-base-100 rounded-t-xl text-center">
         Chat
       </div>
-
-      <div className="chat-container flex-1 overflow-y-auto px-5 py-4 space-y-4">
+  
+      {/* Messages */}
+      <div className="chat-container flex-1 overflow-y-auto px-3 sm:px-5 py-3 sm:py-4 space-y-4">
         {messages.map((msg, index) => {
           const isSelf = msg.senderId === userID;
           return (
             <div key={index} className={`flex ${isSelf ? "justify-end" : "justify-start"}`}>
-              <div className={`max-w-xs sm:max-w-sm md:max-w-md p-3 rounded-lg shadow-md ${isSelf ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-900"} animate-fade-in`}>
-                <div className="text-sm font-semibold mb-1">
+              <div className={`max-w-[85%] sm:max-w-sm md:max-w-md lg:max-w-lg p-3 rounded-lg shadow-md ${isSelf ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-900"} animate-fade-in`}>
+                
+                <div className="text-xs sm:text-sm font-semibold mb-1">
                   {msg.firstName} {msg.lastName}
-                  <time className="text-xs opacity-50 ml-2">
-                  {msg.createdAt ? formatDistanceToNow(new Date(msg.createdAt), { addSuffix: true }) : ""}
+                  <time className="text-[10px] sm:text-xs opacity-50 ml-2 block sm:inline">
+                    {msg.createdAt ? formatDistanceToNow(new Date(msg.createdAt), { addSuffix: true }) : ""}
                   </time>
                 </div>
-                <div className="animate-fade-in text-base break-words">{msg.text}</div>
+  
+                <div className="animate-fade-in text-sm sm:text-base break-words">{msg.text}</div>
               </div>
             </div>
           );
         })}
       </div>
-
-      <div className="p-4 border-t border-base-300 bg-base-100 flex items-center gap-2">
+  
+      {/* Input Field */}
+      <div className="p-3 sm:p-4 border-t border-base-300 bg-base-100 flex items-center gap-2">
         <input
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
           placeholder="Type your message..."
-          className="flex-1 bg-base-200 p-3 rounded-lg border border-base-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="flex-1 bg-base-200 p-2 sm:p-3 rounded-lg border border-base-300 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm sm:text-base"
         />
-        <button onClick={sendMessage} className="btn btn-primary">
+        <button onClick={sendMessage} className="btn btn-primary text-sm sm:text-base">
           Send
         </button>
       </div>
+  
     </div>
   );
+  
 };
 
 export default Chat;
