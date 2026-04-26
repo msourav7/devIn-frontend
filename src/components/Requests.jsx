@@ -8,17 +8,17 @@ const Requests = () => {
   const requests = useSelector((store) => store.requests);
   const dispatch = useDispatch();
 
-  const [showButtons, setShowButtons] = useState(true);
+  const [showButtons, setShowButtons] = useState(true); 
 
   const reviewRequest = async (status, _id) => {
     try {
-      //passed empty because here we are not sending any typed request
+      
       const res = await axios.post(
         BASE_URL + "/request/review/" + status + "/" + _id,
-        {},
+        {},//passed empty because here we are not sending any typed request or data
         { withCredentials: true }
       );
-      dispatch(removeRequest(_id));
+      dispatch(removeRequest(_id));//after accept or reject the buttons or profile should hide or removed from the store
     } catch (err) {
       console.error("Requests error : " + err.message);
     }
