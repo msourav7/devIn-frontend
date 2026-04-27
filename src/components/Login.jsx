@@ -9,8 +9,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { BatteryFull, BatteryLow, BatteryCharging, BatteryMedium } from "lucide-react";
 
 const Login = () => {
-  const [emailId, setEmailId] = useState("eren@gmail.com");
-  const [password, setPassword] = useState("Eren@123");
+  // const [emailId, setEmailId] = useState("eren@gmail.com");
+  const [emailId, setEmailId] = useState("");
+  // const [password, setPassword] = useState("Eren@123");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
